@@ -1,5 +1,5 @@
 import React from "react";
-import { usePosts } from "../assets/hooks/fetch";
+import { usePosts } from "../assets/hooks/fetchPosts";
 import { Post } from "./post";
 import { useSelector } from "react-redux";
 import { selectPosts } from "../features/postsSlice";

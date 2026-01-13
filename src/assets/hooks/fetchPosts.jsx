@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from "react-redux";
 import { addPosts } from "../../features/postsSlice";
 import { useSelector } from "react-redux";
-import { selectSubreddit } from "../../features/postsSlice";
+import { selectSubreddit } from "../../features/subredditsSlice";
 export function usePosts() {
     const [posts, setPosts] = useState([]);
     const subreddit = useSelector(selectSubreddit);
@@ -12,17 +12,12 @@ export function usePosts() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch("../../../public/subreddits/" + subreddit + ".json");
-                let redditData = await response.text();
-                console.log("Here is the data")
-                console.log(redditData);
-                console.log("Here is the data")
-                redditData = JSON.parse(redditData);
+                const response = await fetch("/subreddits/" + subreddit + ".json");
+                const redditData = await response.json();
                 const mappedPosts = redditData.data.children.map((child) => {
                     const ins = child.data;
                     const image =
                         ins.preview?.images?.[0]?.source?.url?.replaceAll("&amp;", "&");
-                    console.log(image)
                     return {
                         id: uuidv4(),
                         isVideo: ins.is_video,

@@ -1,11 +1,10 @@
-import { useState } from 'react'
-import './App.css'
 import { Posts } from './components/posts'
-
+import { Subreddits } from './components/subreddits'
 function App() {
   return (
     <>
-      <Posts/>
+      <Subreddits />
+      <Posts />
     </>
   )
 }
