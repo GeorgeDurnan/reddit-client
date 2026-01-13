@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.css'
-import { Post } from './components/post'
+import { Posts } from './components/posts'
 
 function App() {
   return (
     <>
-      <Post title = "Salam George"/>
+      <Posts/>
     </>
   )
 }
