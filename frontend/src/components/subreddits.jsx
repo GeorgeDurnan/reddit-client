@@ -22,7 +22,7 @@ export const Subreddits = () => {
          setOutput("Already included")
          return
       }
-      const response = await fetch("https://cors-anywhere.com/reddit.com/r/" + reddit + "/about/.json")
+      const response = await fetch("http://localhost:3000/getAbout/" + reddit)
       const json = await response.json()
       if (response.status == 200) {
          setOutput("adding...")

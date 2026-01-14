@@ -12,7 +12,7 @@ export function usePosts() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch("https://cors-anywhere.com/reddit.com/r/" + subreddit + "/.json");
+                const response = await fetch("http://localhost:3000/getSubReddit/" + subreddit);
                 const redditData = await response.json();
                 const mappedPosts = redditData.data.children.map((child) => {
                     const ins = child.data;
@@ -23,7 +23,7 @@ export function usePosts() {
                         isVideo: ins.is_video,
                         thumbnail: ins.thumbnail,
                         author: ins.author,
-                        url: "https://cors-anywhere.com/https://reddit.com" + ins.permalink + ".json",
+                        url: "http://localhost:3000/getComments/?link=https://reddit.com" + ins.permalink + ".json",
                         media: ins.media,
                         title: ins.title,
                         isMedia: ins.thumbnail !== "self",
