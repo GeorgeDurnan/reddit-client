@@ -1,23 +1,24 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit'
+import {setUrl} from "./commentsSlice"
 const initialState = {
     posts: [],
+    activePost: null
 }
 const postsSlice = createSlice({
     name: "posts",
     initialState,
     reducers: {
         addPosts: (state, action) =>{
-            const newPosts = []
-            action.payload.forEach((element) => {
-                if(element.image == undefined){
-                    return
-                }
-                newPosts.push(element)
-            })
-            state.posts = newPosts
+            state.posts = action.payload
+            
+        },
+        changeActivePost: (state,action)=>{
+            state.activePost = action.payload
+
         }
     }
 })
 export default postsSlice.reducer
-export const {addPosts} = postsSlice.actions; 
-export const selectPosts = (state) => state.posts.posts;
+export const {addPosts, changeActivePost} = postsSlice.actions 
+export const selectPosts = (state) => state.posts.posts
+export const selectActivePost = (state) => state.posts.activePost 

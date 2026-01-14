@@ -1,22 +1,24 @@
-import {createSlice, createSelector} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     comments: {},
+    url: "/comments/comments.json"
 }
 const commentsSlice = createSlice({
     name: "comments",
     initialState,
     reducers: {
-        addComments: (state, action) =>{
-            state.comments[action.payload.postId] = action.payload.comments
-        }
+        addComments: (state, action) => {
+            state.comments[action.payload.id] = action.payload.comments
+        },
+        setUrl:(state, action) =>{
+            if(state.url === action.payload){
+                state.comments = {};
+            }
+            state.url = action.payload;
+        },
     }
 })
 export default commentsSlice.reducer
-export const {addComments} = commentsSlice.actions; 
-export const selectComments = (state) => state.comments.comments;
-export const selectCommentsByPostId = postId =>{
-    console.log("selecting comments for postId: " + postId);
-    return createSelector(
-    [selectComments],
-    comments => comments[postId] || []
-  )}
+export const { addComments, setUrl } = commentsSlice.actions
+export const selectUrl = (state) => state.comments.url
+export const selectCommentsById = (state, id) => state.comments.comments[id]

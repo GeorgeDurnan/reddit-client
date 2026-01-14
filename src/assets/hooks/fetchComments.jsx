@@ -1,38 +1,40 @@
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addComments } from "../../features/commentsSlice";
-import { useSelector } from "react-redux";
-export function useComments(postId) {
-    const [comments, setComments] = useState([]);
-    const dispatch = useDispatch();
-
+import { selectUrl } from "../../features/commentsSlice";
+import { selectActivePost } from "../../features/postsSlice";
+import { v4 as uuidv4 } from 'uuid';
+export function useComments() {
+    const dispatch = useDispatch()
+    const url = useSelector(selectUrl)
+    const activePost = useSelector(selectActivePost)
     useEffect(() => {
-        const fetchComments = async () => {
+        async function fetchComments() {
             try {
-                const response = await fetch("/comments/comments.json");
+                if (!url || !activePost) {
+                    return
+                }
+                const response = await fetch(url);
                 const text = await response.json();
-                const mappedComments = text[1].data.children.map((child) => {
-                    const ins = child.data;
+                const commments = text[1].data.children.map((comment) => {
+                    const data = comment.data
                     return {
                         id: uuidv4(),
-                        author: ins.author,
-                        text: ins.body,
-                        upvotes: ins.ups,
-                        downvotes: ins.downs,
-                        replies: ins.replies
-
-                    };
-                });
-
-                setComments(mappedComments);
-                dispatch(addComments({postId, comments: mappedComments}));
-            } catch (error) {
-                console.error("Failed to fetch:", error);
+                        body: data.body,
+                        author: data.author,
+                        upvotes: data.ups - data.downs,
+                        replies: data.replies
+                    }
+                })
+                dispatch(addComments({id: activePost, comments: commments}))
+            } catch (e) {
+                console.log("Failed to fetch json from" + url)
+                return
             }
-        };
-        fetchComments();
-    }, [postId, dispatch]);
 
-    return comments;
+
+        }
+        fetchComments()
+    }, [activePost])
+
 }

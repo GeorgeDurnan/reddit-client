@@ -1,15 +1,17 @@
-import { selectCommentsByPostId } from "../features/commentsSlice";
 import { useSelector } from "react-redux";
 import { Comment } from "./comment";
-import { useComments } from "../assets/hooks/fetchComments";
-export const Comments = (props) =>{
-    useComments(props.postId);
-    const comments = useSelector(selectCommentsByPostId(props.postId))
+import { selectCommentsById } from "../features/commentsSlice";
+
+export const Comments = ({id}) => {
+    const comments = useSelector(state => selectCommentsById(state, id))
+    if(comments == undefined){
+        return <h1>Undefined</h1>
+    }
     return (
         <>
-            {comments.map(comment=>(
-                <Comment key = {comment.id} comment = {comment}/>
+            {comments.map(comment => (
+                <Comment key={comment.id} comment={comment} />
             ))}
         </>
-    )
-}
+    );
+};

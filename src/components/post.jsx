@@ -1,4 +1,4 @@
-import { Comments } from "./comments";
+import { Footer } from "./commentFooter";
 export const Post = ({post}) => {
 
    return <>
@@ -6,7 +6,7 @@ export const Post = ({post}) => {
       <h2>{post.text}</h2>
       <img src={post.image} alt="not loading" width="800" height="600" />
       <h3>{post.author}</h3>
-      <Comments postId = {post.id}/>
+      <Footer post={post}/>
 
    </>;
 }

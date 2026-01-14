@@ -4,7 +4,6 @@ import { Post } from "./post";
 import { useSelector } from "react-redux";
 import { selectPosts } from "../features/postsSlice";
 export const Posts = () => {
-   usePosts()
    const posts = useSelector(selectPosts);
    if (posts.length === 0) {
       return <div>Loading...</div>;
