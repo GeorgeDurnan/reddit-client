@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1768477732821" clover="3.2.0">
+  <project timestamp="1768477732822" name="All files">
+    <metrics statements="28" coveredstatements="16" conditionals="2" coveredconditionals="0" methods="15" coveredmethods="0" elements="45" coveredelements="16" complexity="0" loc="28" ncloc="28" packages="2" files="4" classes="4"/>
+    <package name="app">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="store.jsx" path="C:\Users\shaun\Desktop\George\reddit\reddit-client\frontend\src\app\store.jsx">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="features">
+      <metrics statements="28" coveredstatements="16" conditionals="2" coveredconditionals="0" methods="15" coveredmethods="0"/>
+      <file name="commentsSlice.jsx" path="C:\Users\shaun\Desktop\George\reddit\reddit-client\frontend\src\features\commentsSlice.jsx">
+        <metrics statements="9" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+      <file name="postsSlice.jsx" path="C:\Users\shaun\Desktop\George\reddit\reddit-client\frontend\src\features\postsSlice.jsx">
+        <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+      <file name="subredditsSlice.jsx" path="C:\Users\shaun\Desktop\George\reddit\reddit-client\frontend\src\features\subredditsSlice.jsx">
+        <metrics statements="12" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

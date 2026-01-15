@@ -28,7 +28,9 @@ export function usePosts() {
                         title: ins.title,
                         isMedia: ins.thumbnail !== "self",
                         text: ins.selftext,
-                        image: image
+                        image: image,
+                        width: ins.thumbnail_width,
+                        height: ins.thumbnail_height
                     };
                 });
 

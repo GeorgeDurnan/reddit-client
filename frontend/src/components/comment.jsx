@@ -32,7 +32,7 @@ export const Comment = ({ comment }) => {
             <h3>{comment.author}</h3>
             <h4>{comment.body}</h4>
             <h5>Upvotes: {comment.upvotes}</h5>
-            <button onClick={handleRepliesClick} style={{ display: hasReplies ? 'block' : 'none' }}>Replies</button>
+            <button onClick={handleRepliesClick} style={{ display: hasReplies ? 'block' : 'none' }} data-testid="replies-button">Replies</button>
             <div style={{ display: showReplies ? 'block' : 'none' }}>
                 <Comments id={comment.id} />
             </div>

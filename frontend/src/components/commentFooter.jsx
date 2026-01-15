@@ -14,18 +14,17 @@ export const Footer = ({ post }) => {
         } else {
             dispatch(changeActivePost(post.id))
             dispatch(setUrl((post.url)))
-            console.log(post.url)
         }
-        console.log("activePost:", activePost, typeof activePost);
-        console.log("post.id:", post.id, typeof post.id);
+        console.log(post)
     }
     return (
         <>
             <h4>{post.author}</h4>
             <button onClick={handleClick}>Show comments</button>
             <div style={{ display: showComments ? 'block' : 'none' }}>
-                <Comments id={post.id}/>
+                <Comments id={post.id} />
             </div>
+
         </>
     )
 }

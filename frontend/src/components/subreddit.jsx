@@ -8,7 +8,7 @@ export const Subreddit = (props) => {
     const handleClick2 = () => dispatch(removeSubreddit(props.title));
     const icon = useSelector((state) => selectIcon(state, props.title))
    return <>
-    <div id = "subreddit">
+    <div class = "subreddit">
         <button onClick = {handleClick}>
         <h4>{props.title}</h4>
         <img src= {icon} alt = "not loading" width="50" height="50"/>

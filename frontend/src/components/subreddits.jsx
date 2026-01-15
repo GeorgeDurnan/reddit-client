@@ -23,26 +23,26 @@ export const Subreddits = () => {
          return
       }
       const response = await fetch("http://localhost:3000/getAbout/" + reddit)
-      const json = await response.json()
       if (response.status == 200) {
-         setOutput("adding...")
+         const json = await response.json()
          const icon = json.data.icon_img;
          if (icon) {
             dispatch(addSubreddit({ name: reddit, icon: json.data.icon_img }))
          } else {
             dispatch(addSubreddit({ name: reddit, icon: "https://e7.pngegg.com/pngimages/288/103/png-clipart-reddit-computer-icons-logo-others-miscellaneous-orange.png" }))
          }
+          setOutput("")
 
       } else {
          setOutput("does not exist maybe you typed it wrong")
       }
    }
    return (
-      <div>
+      <div className ="right">
          {subreddits.map(subreddit => (
-            <Subreddit key={subreddit} title={subreddit} />
+            <Subreddit className = "subreddit" key={subreddit} title={subreddit} />
          ))}
-         <form onSubmit={handleSubmit}>
+         <form onSubmit={handleSubmit} className = "subreddit">
             <input type="text" id="input" name="input" value={input} onChange={(e) => setInput(e.target.value)} /><br />
             <input type="submit" value="Add new subreddit"></input>
          </form>

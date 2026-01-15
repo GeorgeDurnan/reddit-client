@@ -11,19 +11,19 @@ app.get("/getSubreddit/:subreddit", async (req, res) => {
     if (response.status === 200) {
         res.status(200).send(data)
     } else {
-        res.status(response.status).send()
+        res.status(404).send()
     }
 
 
 })
 app.get("/getComments/", async (req, res) => {
-    
+
     const response = await fetch(`${req.query.link}/.json`)
     const data = await response.json();
     if (response.status === 200) {
         res.status(200).send(data)
     } else {
-        res.status(response.status).send()
+        res.status(404).send()
     }
 
 
@@ -32,10 +32,10 @@ app.get("/getAbout/:subreddit", async (req, res) => {
 
     const response = await fetch(`https://www.reddit.com/r/${req.params.subreddit}/about/.json`)
     const data = await response.json();
-    if (response.status === 200) {
+    if (response.status === 200 && data.kind === "t5") {
         res.status(200).send(data)
     } else {
-        res.status(response.status).send()
+        res.status(404).send()
     }
 
 
